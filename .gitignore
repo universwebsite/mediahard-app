@@ -1,4 +1,4 @@
-
+# Symfony Framework Bundle
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -9,12 +9,27 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+# PHPUnit
 ###> phpunit/phpunit ###
 /phpunit.xml
 /.phpunit.cache/
 ###< phpunit/phpunit ###
 
+# Symfony Asset Mapper
 ###> symfony/asset-mapper ###
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+# Секреты и ключи
+.env
+
+# Логи
+*.log
+
+# Папки зависимостей
+node_modules/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
