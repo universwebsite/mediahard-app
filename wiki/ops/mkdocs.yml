@@ -29,12 +29,16 @@ theme:
 
 nav:
   - 🏠 Главная: index.md
+  - Общая архитектура: proxmox/architecture-overview.md # 🔴 Наш ARCHITECTURE.md
   - 🎛️ 1. Развертывание Proxmox VE 9:
     - 📄 Инициализация ОС и Кворум: proxmox/01-bootstrap.md
     - 📄 Локализация и Ключи: proxmox/02-security.md
+    - План миграции данных: proxmox/03-migration-plan.md # 🔴 Наш MIGRATION.md
   - 💿 2. Дисковая подсистема (ZFS):
     - 📄 Создание и Тюнинг пулов: storage/01-zfs-pools.md
     - 📄 Репликация по 10G Direct: storage/02-pvesr-10g.md
   - 🚀 3. Контейнеризация и ИИ:
     - 📄 Docker-окружение Debian 12: apps/01-docker-symfony.md
     - 📄 Инференс Ollama AI (Llama3): apps/02-ollama-avx2.md
+  - 📈 Эволюция систем:
+    - Развитие ИТ-инфраструктуры: infra-evolution.md # 🔴 Наш INFRA_EVOLUTION.md
