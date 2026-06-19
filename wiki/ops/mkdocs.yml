@@ -1,0 +1,40 @@
+site_name: MediaHard Ops Wiki
+site_url: https://mediahard.ru
+site_description: Публичный архитектурный и инженерный манифест ИИ-платформы MediaHard
+
+# Полная изоляция сборки внутри папки назначения
+docs_dir: 'docs'
+site_dir: '../../public/wiki/ops'
+
+theme:
+  name: material
+  language: ru
+  palette:
+    - scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Темная тема
+    - scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Светлая тема
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+
+nav:
+  - 🏠 Главная: index.md
+  - 🎛️ 1. Развертывание Proxmox VE 9:
+    - 📄 Инициализация ОС и Кворум: proxmox/01-bootstrap.md
+    - 📄 Локализация и Ключи: proxmox/02-security.md
+  - 💿 2. Дисковая подсистема (ZFS):
+    - 📄 Создание и Тюнинг пулов: storage/01-zfs-pools.md
+    - 📄 Репликация по 10G Direct: storage/02-pvesr-10g.md
+  - 🚀 3. Контейнеризация и ИИ:
+    - 📄 Docker-окружение Debian 12: apps/01-docker-symfony.md
+    - 📄 Инференс Ollama AI (Llama3): apps/02-ollama-avx2.md
