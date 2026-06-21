@@ -34,6 +34,7 @@ nav:
     - 📄 Инициализация ОС и Кворум: proxmox/01-bootstrap.md
     - 📄 Локализация и Ключи: proxmox/02-security.md
     - План миграции данных: proxmox/03-migration-plan.md # 🔴 Наш MIGRATION.md
+    - 📄 Реестр инцидентов (Post-Mortem): proxmox/04-incidents-001.md
   - 💿 2. Дисковая подсистема (ZFS):
     - 📄 Создание и Тюнинг пулов: storage/01-zfs-pools.md
     - 📄 Репликация по 10G Direct: storage/02-pvesr-10g.md
