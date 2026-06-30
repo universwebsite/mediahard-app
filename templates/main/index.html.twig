@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MediaHard — экспертный B2B-маркетплейс вычислительной техники, серверов и сетевого оборудования. Либеральные условия для поставщиков, ИИ-верификация компонентов, система лояльности и кэшбэка. Запуск — июль 2026 года!">
+    <title>MediaHard — Экспертный маркетплейс серверного оборудования и электроники</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-green: #10b981;
+            --accent-orange: #f97316;
+        }
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            line-height: 1.6; 
+            color: var(--text-main); 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 60px 20px; 
+            background-color: var(--bg-color); 
+        }
+        .hero { 
+            text-align: center; 
+            background: var(--card-bg); 
+            padding: 50px 40px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25); 
+            border: 1px solid #334155;
+        }
+        h1 { 
+            color: var(--accent-blue); 
+            font-size: 2.5em; 
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        .features { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 24px; 
+            margin-top: 40px; 
+            text-align: left; 
+        }
+        .feature-card { 
+            background: #111827; 
+            padding: 25px; 
+            border-radius: 12px; 
+            border: 1px solid #1f2937;
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            color: var(--accent-blue);
+            font-size: 1.4em;
+            border-bottom: 1px solid #1f2937;
+            padding-bottom: 10px;
+        }
+        .feature-card ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        .feature-card li {
+            margin-bottom: 8px;
+            color: #cbd5e1;
+        }
+        .feature-card li::marker {
+            color: var(--accent-blue);
+        }
+        .loyalty-box { 
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); 
+            color: #a7f3d0; 
+            padding: 18px; 
+            border-radius: 12px; 
+            margin-top: 25px; 
+            border: 1px solid var(--accent-green);
+            font-size: 1.05em;
+        }
+        .badge {
+            background-color: var(--accent-orange);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        .launch-date {
+            margin-top: 40px;
+            font-size: 1.2em;
+            color: var(--accent-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .footer-note { 
+            font-size: 0.85em; 
+            color: var(--text-muted); 
+            margin-top: 60px; 
+            text-align: center; 
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>MediaHard <span style="font-weight: 300; color: var(--text-main);">Enterprise</span></h1>
+        <p class="subtitle">Экспертная b2b-платформа свободной торговли серверным, сетевым оборудованием и высокопроизводительной электроникой.</p>
+        
+        <div class="loyalty-box">
+            ⚡ <strong>Интеллектуальная программа лояльности:</strong> Начисляем 1% кэшбэка с каждой сделки. Накопительные баллы автоматически конвертируются в дисконтные промокоды на следующую закупку оборудования.
+        </div>
+        <h2 style="color: var(--accent-orange); margin-top: 40px; text-align: left;">⚡ Актуальные предложения со склада (Прямой импорт из PostgreSQL)</h2>
+        <div class="features" style="margin-top: 15px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            {% for item in items %}
+                <div class="feature-card" style="border-left: 4px solid var(--accent-orange); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3>{{ item.title }}</h3>
+                        <p style="color: #cbd5e1; font-size: 0.95em;">{{ item.description|default('Спецификации и компоненты верифицированы локальной моделью Ollama AI.') }}</p>
+                    </div>
+                    <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--accent-green); font-weight: bold; font-size: 1.25em;">{{ item.price|number_format(0, '.', ' ') }} ₽</span>
+                        <span class="badge">В наличии</span>
+                    </div>
+                </div>
+            {% else %}
+                <div class="feature-card" style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">
+                    Склад пуст или идет фоновая ребалансировка Ceph-хранилища...
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>Поставщикам и Продавцам</h3>
+                <ul>
+                    <li>Фиксированный сверхнизкий сбор за размещение лотов</li>
+                    <li>Минимальная комиссия со сделок без скрытых удержаний</li>
+                    <li>Либеральная политика независимой модерации</li>
+                    <li>Прямое взаимодействие с конечным покупателем</li>
+                    <li>Доступ к ИИ-генерации цифровых паспортов железа</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>Инженерам и Покупателям</h3>
+                <ul>
+                    <li>100% бесплатный доступ к поиску и спецификациям</li>
+                    <li>Широкий ассортимент серверных комплектующих и СХД</li>
+                    <li>Прозрачный рейтинг контрагентов на базе блокчейн-метрик</li>
+                    <li>Валидация компонентов через сквозные стресс-тесты</li>
+                    <li>Интегрированная автоматизация скидочных купонов</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="launch-date">🚀 Запуск полнофункционального ядра платформы — Июль 2026</p>
+    </div>
+
+    <div class="footer-note">
+        <p>&copy; 2024-2026 MediaHard.ru — Профессиональные посреднические услуги и автоматизация при купле-продаже серверных решений и IT-компонентов. Все права защищены.</p>
+    </div>
+
+</body>
+</html>
