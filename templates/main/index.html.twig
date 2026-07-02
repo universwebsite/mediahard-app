@@ -126,7 +126,10 @@
             {% for item in items %}
                 <div class="feature-card" style="border-left: 4px solid var(--accent-orange); display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
-                        <h3>{{ item.title }}</h3>
+                        <h3 style="margin-top: 0; color: var(--accent-blue); font-size: 1.4em; border-bottom: 1px solid #1f2937; padding-bottom: 10px;">
+                         <a href="{{ path('app_item_show', {'id': item.id}) }}" style="color: var(--accent-blue); text-decoration: none;">{{ item.title }}</a>
+                        </h3>
+
                         <p style="color: #cbd5e1; font-size: 0.95em;">{{ item.description|default('Спецификации и компоненты верифицированы локальной моделью Ollama AI.') }}</p>
                     </div>
                     <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">

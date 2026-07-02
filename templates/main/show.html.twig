@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ item.title }} — Цифровой паспорт MediaHard</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-green: #10b981;
+            --accent-orange: #f97316;
+        }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            line-height: 1.6; 
+            color: var(--text-main); 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 60px 20px; 
+            background-color: var(--bg-color); 
+        }
+        .container {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 { color: var(--text-main); margin-top: 0; font-size: 2.2em; }
+        .price-tag {
+            font-size: 2em;
+            color: var(--accent-green);
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .specs-box {
+            background: #111827;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #1f2937;
+            margin-top: 30px;
+        }
+        .specs-box h3 { color: var(--accent-blue); margin-top: 0; }
+        .ai-passport-box {
+            border: 1px dashed var(--accent-orange);
+            background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            position: relative;
+        }
+        .ai-status-badge {
+            background: var(--accent-orange);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .btn-ai {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+        .btn-ai:hover { background: #ea580c; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="{{ path('app_main') }}" class="back-link">← Вернуться на витрину</a>
+        
+        <span style="color: var(--text-muted); font-size: 0.9em; display: block; margin-bottom: 5px;">Компонент #{{ item.id }}</span>
+        <h1>{{ item.title }}</h1>
+        
+        <div class="price-tag">{{ item.price|number_format(0, '.', ' ') }} ₽</div>
+
+        <div class="specs-box">
+            <h3>📋 Исходные спецификации оборудования</h3>
+            <p style="color: #cbd5e1; white-space: pre-wrap;">{{ item.description|default('Описание и технические характеристики не указаны поставщиком.') }}</p>
+        </div>
+
+        <!-- 🤖 Контур ИИ-паспорта (Заготовка под Шаг 3) -->
+        <div class="ai-passport-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3 style="color: var(--accent-orange); margin: 0;">🤖 Интеллектуальный паспорт Ollama AI</h3>
+                <span class="ai-status-badge">Ready for generation</span>
+            </div>
+            <p style="color: #e2e8f0; font-size: 0.95em;">
+                Локальная нейросеть готова провести глубокий анализ данного лота: оценку ликвидности на b2b-рынке 2026 года, парсинг спецификаций, проверку потенциальных уязвимостей и прогноз деградации MTBF (Mean Time Between Failures).
+            </p>
+            
+            <!-- По нажатию на эту кнопку мы в следующем шаге запустим генерацию ИИ -->
+            <button class="btn-ai">Сгенерировать Цифровой Паспорт (Инференс CPU i9)</button>
+        </div>
+    </div>
+
+    <p style="text-align: center; color: var(--text-muted); font-size: 0.85em; margin-top: 40px;">
+        &copy; 2026 MediaHard Enterprise. Защищено сквозным шифрованием кластера.
+    </p>
+
+</body>
+</html>
