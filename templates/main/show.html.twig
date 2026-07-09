@@ -107,11 +107,25 @@
                 <span class="ai-status-badge">Ready for generation</span>
             </div>
             <p style="color: #e2e8f0; font-size: 0.95em;">
-                Локальная нейросеть готова провести глубокий анализ данного лота: оценку ликвидности на b2b-рынке 2026 года, парсинг спецификаций, проверку потенциальных уязвимостей и прогноз деградации MTBF (Mean Time Between Failures).
+                {% if app.flashes('ai_report') is not empty %}
+    <div style="background: #111827; padding: 20px; border-radius: 8px; border: 1px solid var(--accent-orange); margin-top: 15px; color: #f8fafc; white-space: pre-wrap; font-family: monospace;">
+        {% for message in app.flashes('ai_report') %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% else %}
+    <p style="color: var(--text-muted); font-size: 0.95em;">
+        Локальная нейросеть готова провести глубокий технический анализ данного лота: оценку ликвидности на b2b-рынке, парсинг спецификаций и прогноз деградации MTBF.
+    </p>
+{% endif %}
+
             </p>
             
             <!-- По нажатию на эту кнопку мы в следующем шаге запустим генерацию ИИ -->
-            <button class="btn-ai">Сгенерировать Цифровой Паспорт (Инференс CPU i9)</button>
+            <form action="{{ path('app_item_generate_passport', {'id': item.id}) }}" method="POST">
+                <button type="submit" class="btn-ai">Сгенерировать Цифровой Паспорт (Инференс CPU i9)</button>
+            </form>
+
         </div>
     </div>
 
