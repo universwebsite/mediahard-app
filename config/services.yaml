@@ -1,18 +1,27 @@
 parameters:
-    # Для запуска Symfony на хосте (Ubuntu vm212)
+    # Базовый адрес проброшенного контейнера Ollama на хосте vm212
     ollama_base_url: 'http://127.0.0.1:11434'
 
 services:
+    # Базовые настройки для ВСЕХ сервисов приложения
+    _defaults:
+        autowire: true      # Автоматически внедряет зависимости (HttpClient, EntityManager)
+        autoconfigure: true # Автоматически регистрирует команды и слушатели событий
+
+    # Автоматическое сканирование и регистрация классов в src/
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    # Принудительная маркировка контроллеров, чтобы Symfony видела их атрибуты #[Route]
     App\Controller\:
-        resource: '../src/Controller'
+        resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
-    App\Service\:
-        resource: '../src/Service/*'
-        autoconfigure: true
-        autowire: true
-
+    # Явная передача параметра в конструктор вашего ИИ-сервиса
     App\Service\OllamaService:
-        autowire: true
         arguments:
             $ollamaBaseUrl: '%ollama_base_url%'
