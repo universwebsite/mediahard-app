@@ -1,6 +1,8 @@
 parameters:
     # Базовый адрес проброшенного контейнера Ollama на хосте vm212
     ollama_base_url: 'http://127.0.0.1:11434'
+    # Модель, которую будешь использовать (например, llama3.2 или gemma2)
+    ollama_model: 'llama3:latest'    
 
 services:
     # Базовые настройки для ВСЕХ сервисов приложения
@@ -25,3 +27,4 @@ services:
     App\Service\OllamaService:
         arguments:
             $ollamaBaseUrl: '%ollama_base_url%'
+            $ollamaModel: '%ollama_model%'
