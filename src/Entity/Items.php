@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ItemsRepository::class)]
-#[ORM\Table(name: 'items')] // 💡 Жестко указываем читать старую таблицу items
+#[ORM\Table(name: 'items')]
 class Items
 {
     #[ORM\Id]
@@ -15,7 +15,7 @@ class Items
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, name: 'title')] // 💡 name указывает на имя столбца в старой базе (title или name)
+    #[ORM\Column(length: 255, name: 'title')]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
@@ -23,6 +23,11 @@ class Items
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
+
+    
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $aiPassportHtml = null;
+    
 
     public function getId(): ?int
     {
@@ -61,4 +66,17 @@ class Items
         $this->description = $description;
         return $this;
     }
+
+    
+    public function getAiPassportHtml(): ?string
+    {
+        return $this->aiPassportHtml;
+    }
+
+    public function setAiPassportHtml(?string $aiPassportHtml): static
+    {
+        $this->aiPassportHtml = $aiPassportHtml;
+        return $this;
+    }
+    
 }
