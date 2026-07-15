@@ -10,6 +10,9 @@ services:
         autowire: true      # Автоматически внедряет зависимости (HttpClient, EntityManager)
         autoconfigure: true # Автоматически регистрирует команды и слушатели событий
 
+    Symfony\Contracts\HttpClient\HttpClientInterface: '@http_client'
+
+
     # Автоматическое сканирование и регистрация классов в src/
     App\:
         resource: '../src/'
