@@ -31,7 +31,8 @@ class OllamaService
                     'prompt' => $prompt,
                     'stream' => false,
                 ],
-                'timeout' => 30,
+                'timeout' => 300,
+                'max_duration' => 300,   // Максимальное время всей HTTP-сессии
             ]);
 
             if ($response->getStatusCode() !== Response::HTTP_OK) {
