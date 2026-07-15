@@ -100,24 +100,23 @@
             <p style="color: #cbd5e1; white-space: pre-wrap;">{{ item.description|default('Описание и технические характеристики не указаны поставщиком.') }}</p>
         </div>
 
-        <!-- 🤖 Контур ИИ-паспорта (Заготовка под Шаг 3) -->
-        <div class="ai-passport-box">
-            <h3 style="color: var(--accent-orange); margin-top: 0; margin-bottom: 15px;">🤖 Верификация ядра Ollama AI (Core i9)</h3>
-            
-            {% for message in app.flashes('ai_error') %}
-                <p style="color: var(--accent-orange); font-weight: bold;">{{ message }}</p>
-            {% endfor %}
+        <!-- 🤖 Высокотехнологичный блок ИИ-анализа -->
+        <div class="ai-passport-box" style="margin-top: 30px;">
+            <h2 style="color: var(--accent-blue); margin-top: 0;">Интеллектуальный паспорт</h2>
 
-            <div style="color: #cbd5e1; font-family: monospace; background: #111827; padding: 20px; border-radius: 8px; border: 1px solid #1f2937; line-height: 1.7;">
-                {% if item.aiPassportHtml %}
-                    <!-- 💡 Фильтр raw безопасно выполняет HTML-теги, сохраненные в базе -->
-                    {{ item.aiPassportHtml|raw }}
-                {% else %}
-                    <p style="color: var(--text-muted);">ИИ-паспорт формируется или недоступен...</p>
-                {% endif %}
-            </div>
+            {% if item.aiPassportHtml is not empty %}
+                <!-- Выводим сгенерированный HTML-паспорт прямо из базы данных -->
+                {{ item.aiPassportHtml|raw }}
+            {% else %}
+                <p style="color: var(--text-muted);">Паспорт ещё не сгенерирован. Страница обновится с паспортом при следующем заходе.</p>
+            {% endif %}
+
+            {% for flashMessage in app.flashes('info') %}
+                <div style="background: #1e3a8a; color: #93c5fd; padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid #2563eb;">
+                    ⚡ {{ flashMessage }}
+                </div>
+            {% endfor %}
         </div>
-    </div>
 
     <p style="text-align: center; color: var(--text-muted); font-size: 0.85em; margin-top: 40px;">
         &copy; 2026 MediaHard Enterprise. Защищено сквозным шифрованием кластера.
