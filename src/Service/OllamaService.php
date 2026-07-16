@@ -10,7 +10,7 @@ class OllamaService
 {
     public function __construct(
         private string $ollamaBaseUrl = 'http://127.0.0.1:11434',
-        private string $ollamaModel = 'llama3:latest',
+        private string $ollamaModel = 'llama3.2',
         private HttpClientInterface $httpClient,
     ) {}
 
