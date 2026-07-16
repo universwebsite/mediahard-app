@@ -14,8 +14,10 @@ class OllamaService
         private HttpClientInterface $httpClient,
     ) {}
 
-    public function generatePassport(Items $item): string
+    public function generatePassport(Items $item): ?string
     {
+        $itemTitle = $item->getTitle();
+        $itemDescription = $item->getDescription();
         // 1. Формируем промпт на основе данных товара
         $prompt = "Ты — изолированный HTML-модуль верстки платформы MediaHard Enterprise.\n" .
                   "Твоя единственная задача — взять исходный текст технических характеристик товара, " .
