@@ -42,7 +42,7 @@ PROMPT;
                     'prompt' => $prompt,
                     'stream' => false,
                 ],
-                'timeout' => 300, // 5 минут для локальной генерации
+                'timeout' => 900, // 15 минут для локальной генерации
             ]);
 
             if ($response->getStatusCode() !== Response::HTTP_OK) {
