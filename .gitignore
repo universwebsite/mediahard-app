@@ -21,12 +21,6 @@
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
-# Секреты и ключи
-.env
-
-# Логи
-*.log
-
 # Папки зависимостей
 node_modules/
 
@@ -62,3 +56,18 @@ logs/
 # Артефакты сборки (если будешь использовать make/docker build)
 build/
 dist/
+
+# Docker
+docker-compose.override.yml
+.env.docker
+
+# AI/ML модели и кэш
+/models/
+/cache/
+/ollama_models/
+
+# Медиа и тяжёлые файлы
+*.mp4
+*.avi
+*.mov
+/storage/exports/
